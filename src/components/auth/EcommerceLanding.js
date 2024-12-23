@@ -199,7 +199,7 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-8 w-full">
               {/* Logo */}
-              <h1 className="text-2xl font-serif">AMBRAEE</h1>
+              <h1 className="text-2xl font-serif">MY TAILOR ZONE BY SAHIBA</h1>
 
               {/* Search Bar */}
               <div className="flex-1 max-w-xl">
