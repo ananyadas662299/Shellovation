@@ -146,7 +146,7 @@ const CartPage = ({ onClose, cartItems, updateQuantity, removeItem, onCheckout }
           <div className="space-y-2">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span>${calculateSubtotal().toFixed(2)}</span>
+              <span>₹{calculateSubtotal().toFixed(2)}</span>
             </div>
             {appliedCoupon && (
               <div className="flex justify-between text-green-600">
