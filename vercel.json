@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "buildCommand": "CI=false npm run build",
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node",
+        "config": {
+          "nodeVersion": "16.x"
+        }
+      }
+    ],
+    "env": {
+      "NODE_OPTIONS": "--openssl-legacy-provider"
+    }
+  }
