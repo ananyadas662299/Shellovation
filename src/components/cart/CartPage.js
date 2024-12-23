@@ -156,7 +156,7 @@ const CartPage = ({ onClose, cartItems, updateQuantity, removeItem, onCheckout }
             )}
             <div className="flex justify-between">
               <span>Tax (10%)</span>
-              <span>{calculateTax().toFixed(2)}</span>
+              <span>₹{calculateTax().toFixed(2)}</span>
             </div>
             <div className="flex justify-between font-semibold text-lg border-t pt-2">
               <span>Total</span>
