@@ -76,7 +76,7 @@ const CartPage = ({ onClose, cartItems, updateQuantity, removeItem, onCheckout }
               <div className="w-20 h-20 bg-gray-200 rounded-lg flex-shrink-0"></div>
               <div className="flex-1">
                 <h3 className="font-semibold">{item.name}</h3>
-                <p className="text-gray-600">${item.price.toFixed(2)}</p>
+                <p className="text-gray-600">₹{item.price.toFixed(2)}</p>
               </div>
               <div className="flex items-center space-x-2">
                 <button
@@ -151,16 +151,16 @@ const CartPage = ({ onClose, cartItems, updateQuantity, removeItem, onCheckout }
             {appliedCoupon && (
               <div className="flex justify-between text-green-600">
                 <span>Discount ({appliedCoupon.name})</span>
-                <span>-${calculateDiscount().toFixed(2)}</span>
+                <span>-₹{calculateDiscount().toFixed(2)}</span>
               </div>
             )}
             <div className="flex justify-between">
               <span>Tax (10%)</span>
-              <span>${calculateTax().toFixed(2)}</span>
+              <span>{calculateTax().toFixed(2)}</span>
             </div>
             <div className="flex justify-between font-semibold text-lg border-t pt-2">
               <span>Total</span>
-              <span>${calculateTotal().toFixed(2)}</span>
+              <span>₹{calculateTotal().toFixed(2)}</span>
             </div>
           </div>
           <button
