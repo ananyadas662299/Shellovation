@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Search, Ticket, MessageCircle, User, X as CloseIcon } from 'lucide-react';
+import { ShoppingCart, Search, Ticket, MessageCircle, User, X as CloseIcon, Menu } from 'lucide-react';
 import CartPage from '../cart/CartPage';
 import CouponModal from '../couponModal';
 import ComplaintModal from '../complaintModal';
@@ -11,6 +11,74 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
   const [showComplaints, setShowComplaints] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const products = [
+    {
+      id: 1,
+      name: "Floral Embroidered Anarkali",
+      description: "Beautiful hand-embroidered anarkali suit with dupatta",
+      price: 4999,
+      image: "https://fashionnaari.com/cdn/shop/products/6_1_62735fa6-1de1-4795-b8dd-a4e54c5a9aac_650x.jpg?v=1608895864",
+      category: "ETHNIC WEAR"
+    },
+    {
+      id: 2,
+      name: "Designer Palazzo Set",
+      description: "Comfortable and stylish palazzo set with printed top",
+      price: 2499,
+      image: "https://fashionnaari.com/cdn/shop/products/6_1_62735fa6-1de1-4795-b8dd-a4e54c5a9aac_650x.jpg?v=1608895864",
+      category: "CO-ORDS & JUMPSUITS"
+    },
+    {
+      id: 3,
+      name: "Party Wear Gown",
+      description: "Elegant party wear gown with sequin work",
+      price: 6999,
+      image: "https://fashionnaari.com/cdn/shop/products/6_1_62735fa6-1de1-4795-b8dd-a4e54c5a9aac_650x.jpg?v=1608895864",
+      category: "DRESSES"
+    },
+    {
+      id: 4,
+      name: "Printed Kurti",
+      description: "Cotton printed kurti with traditional design",
+      price: 1299,
+      image: "https://fashionnaari.com/cdn/shop/products/6_1_62735fa6-1de1-4795-b8dd-a4e54c5a9aac_650x.jpg?v=1608895864",
+      category: "UNDER 1499 STORE"
+    },
+    {
+      id: 5,
+      name: "Designer Saree",
+      description: "Silk saree with designer blouse piece",
+      price: 8999,
+      image: "https://fashionnaari.com/cdn/shop/products/6_1_62735fa6-1de1-4795-b8dd-a4e54c5a9aac_650x.jpg?v=1608895864",
+      category: "ETHNIC WEAR"
+    },
+    {
+      id: 6,
+      name: "Crop Top & Skirt Set",
+      description: "Trendy crop top with matching skirt",
+      price: 3499,
+      image: "https://fashionnaari.com/cdn/shop/products/6_1_62735fa6-1de1-4795-b8dd-a4e54c5a9aac_650x.jpg?v=1608895864",
+      category: "CO-ORDS & JUMPSUITS"
+    },
+    {
+      id: 7,
+      name: "Embroidered Shirt",
+      description: "Cotton shirt with delicate embroidery",
+      price: 1499,
+      image: "https://fashionnaari.com/cdn/shop/products/6_1_62735fa6-1de1-4795-b8dd-a4e54c5a9aac_650x.jpg?v=1608895864",
+      category: "TOPS & SHIRTS"
+    },
+    {
+      id: 8,
+      name: "Summer Jumpsuit",
+      description: "Comfortable cotton jumpsuit for summer",
+      price: 2999,
+      image: "https://fashionnaari.com/cdn/shop/products/6_1_62735fa6-1de1-4795-b8dd-a4e54c5a9aac_650x.jpg?v=1608895864",
+      category: "CO-ORDS & JUMPSUITS"
+    }
+  ];
 
   const handleAddToCart = (product) => {
     setCartItems(prevItems => {
@@ -47,6 +115,7 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
   const handleCheckout = () => {
     console.log('Proceeding to checkout with items:', cartItems);
   };
+
   const ProfileModal = ({ isOpen, onClose, userData }) => {
     if (!isOpen) return null;
     return (
@@ -66,7 +135,6 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
               </div>
             </div>
 
-            {/* Common Information */}
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span className="font-medium">Name:</span>
@@ -86,7 +154,6 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
               </div>
             </div>
 
-            {/* Seller-specific Information */}
             {userData.role === 'seller' && (
               <div className="space-y-2 pt-4 border-t">
                 <h3 className="font-semibold text-lg mb-2">Business Details</h3>
@@ -105,7 +172,6 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
               </div>
             )}
 
-            {/* User-specific Information */}
             {userData.role === 'user' && (
               <div className="space-y-2 pt-4 border-t">
                 <h3 className="font-semibold text-lg mb-2">Shipping Details</h3>
@@ -127,82 +193,34 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
       </div>
     );
   };
-  const products = [
-    {
-      id: 1,
-      name: "Stripe Royal Blue Suit Set",
-      price: 5749.00,
-      description: "Elegant blue suit with golden stripes",
-      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?ixlib=rb-4.0.3"
-    },
-    {
-      id: 2,
-      name: "Peachy Bloom Cotton Suit Set",
-      price: 6249.00,
-      description: "Flowing peach anarkali suit",
-      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?ixlib=rb-4.0.3"
-    },
-    {
-      id: 3,
-      name: "Mauve Mirage Co-ord Set",
-      price: 4999.00,
-      description: "Stylish mauve palazzo set",
-      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?ixlib=rb-4.0.3"
-    },
-    {
-      id: 4,
-      name: "Multicolour Floral Chinnon Saree",
-      price: 8249.00,
-      description: "Designer printed saree",
-      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?ixlib=rb-4.0.3"
-    },
-    {
-      id: 5,
-      name: "Emerald Green Silk Saree",
-      price: 8249.00,
-      description: "Traditional silk saree with zari work",
-      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?ixlib=rb-4.0.3"
-    },
-    {
-      id: 6,
-      name: "Ruby Red Party Gown",
-      price: 8249.00,
-      description: "Elegant evening wear gown",
-      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?ixlib=rb-4.0.3"
-    },
-    {
-      id: 7,
-      name: "Golden Zari Work Lehenga",
-      price: 8249.00,
-      description: "Bridal collection lehenga",
-      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?ixlib=rb-4.0.3"
-    },
-    {
-      id: 8,
-      name: "Stripe Royal Blue Suit Set",
-      price: 5749.00,
-      description: "Elegant blue suit with golden stripes",
-      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?ixlib=rb-4.0.3"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Top Banner */}
-      <div className="bg-rose-500 text-white text-center py-2 px-4">
+      <div className="bg-rose-500 text-white text-center py-2 px-4 text-sm md:text-base">
         SALE - UPTO 80% OFF + EXTRA 10% OFF ON PREPAID ORDERS
       </div>
 
       {/* Navbar */}
       <nav className="bg-white shadow-sm py-4">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-8 w-full">
-              {/* Logo */}
-              <h1 className="text-2xl font-serif">MY TAILOR ZONE BY SAHIBA</h1>
+          <div className="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center">
+            {/* Top Bar with Logo and Menu Button */}
+            <div className="flex items-center justify-between">
+              <h1 className="text-xl md:text-2xl font-serif truncate">MY TAILOR ZONE BY SAHIBA</h1>
+              
+              <button 
+                className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
 
+            {/* Mobile and Desktop Navigation */}
+            <div className={`${isMobileMenuOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row flex-1 lg:items-center lg:ml-8 space-y-4 lg:space-y-0`}>
               {/* Search Bar */}
-              <div className="flex-1 max-w-xl">
+              <div className="flex-1 max-w-full lg:max-w-xl">
                 <div className="relative">
                   <input
                     type="text"
@@ -215,19 +233,21 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
                 </div>
               </div>
 
-              {/* Right Icons */}
-              <div className="flex items-center space-x-6">
-              <button 
+              {/* Navigation Icons */}
+              <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:ml-8">
+                <button 
                   onClick={() => setShowProfile(true)}
-                  className="hover:text-rose-500"
+                  className="flex items-center space-x-2 hover:text-rose-500 lg:mr-6"
                 >
                   <User size={24} />
+                  <span className="lg:hidden">Profile</span>
                 </button>
                 <button 
                   onClick={() => setShowCart(true)}
-                  className="hover:text-rose-500 relative"
+                  className="flex items-center space-x-2 hover:text-rose-500 relative lg:mr-6"
                 >
                   <ShoppingCart size={24} />
+                  <span className="lg:hidden">Cart</span>
                   {cartItems.length > 0 && (
                     <span className="absolute -top-2 -right-2 bg-rose-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">
                       {cartItems.reduce((total, item) => total + item.quantity, 0)}
@@ -236,19 +256,21 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
                 </button>
                 <button 
                   onClick={() => setShowCoupons(true)}
-                  className="hover:text-rose-500"
+                  className="flex items-center space-x-2 hover:text-rose-500 lg:mr-6"
                 >
                   <Ticket size={24} />
+                  <span className="lg:hidden">Coupons</span>
                 </button>
                 <button 
                   onClick={() => setShowComplaints(true)}
-                  className="hover:text-rose-500"
+                  className="flex items-center space-x-2 hover:text-rose-500 lg:mr-6"
                 >
                   <MessageCircle size={24} />
+                  <span className="lg:hidden">Complaints</span>
                 </button>
                 <button
                   onClick={onLogout}
-                  className="bg-rose-500 text-white px-4 py-2 rounded-lg hover:bg-rose-600"
+                  className="bg-rose-500 text-white px-4 py-2 rounded-lg hover:bg-rose-600 w-full lg:w-auto"
                 >
                   Logout
                 </button>
@@ -261,11 +283,11 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
       {/* Menu Categories */}
       <div className="border-b">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex space-x-8 py-4 overflow-x-auto">
+          <div className="flex space-x-8 py-4 overflow-x-auto scrollbar-hide">
             {['NEW ARRIVALS', 'ETHNIC WEAR', 'BEST SELLERS', 'DRESSES', 'CO-ORDS & JUMPSUITS', 'TOPS & SHIRTS', 'UNDER 1499 STORE'].map((category) => (
               <button
                 key={category}
-                className="text-gray-700 hover:text-rose-500 whitespace-nowrap font-medium"
+                className="text-gray-700 hover:text-rose-500 whitespace-nowrap font-medium text-sm md:text-base"
               >
                 {category}
               </button>
@@ -277,24 +299,24 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
       {/* Main Content */}
       <main className="py-8">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product) => (
               <div key={product.id} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="aspect-w-1 aspect-h-1 bg-gray-200">
+                <div className="relative pt-[100%]">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    className="absolute top-0 left-0 w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-4">
                   <h3 className="text-lg font-medium text-gray-900">{product.name}</h3>
-                  <p className="mt-1 text-gray-500">{product.description}</p>
+                  <p className="mt-1 text-gray-500 text-sm">{product.description}</p>
                   <div className="mt-4 flex items-center justify-between">
                     <span className="text-lg font-medium text-gray-900">₹{product.price.toFixed(2)}</span>
                     <button
                       onClick={() => handleAddToCart(product)}
-                      className="bg-rose-500 text-white px-4 py-2 rounded-lg hover:bg-rose-600"
+                      className="bg-rose-500 text-white px-4 py-2 rounded-lg hover:bg-rose-600 text-sm"
                     >
                       Add to Cart
                     </button>
@@ -321,14 +343,12 @@ export const EcommerceLanding = ({ userData, onLogout }) => {
           onCheckout={handleCheckout}
         />
       )}
-
       {showCoupons && (
         <CouponModal 
           isOpen={showCoupons}
           onClose={() => setShowCoupons(false)}
         />
       )}
-
       {showComplaints && (
         <ComplaintModal 
           isOpen={showComplaints}
